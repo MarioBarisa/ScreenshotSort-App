@@ -11,9 +11,9 @@ def open_image(picture):
             width,height=image.size
             return {"width": width, "height": height}
     except UnidentifiedImageError as e:
-        return {"Error": "UnidentifiedImageError"}
+        return {"error": "UnidentifiedImageError"}
     except FileNotFoundError as e:
-        return  {"Error": "FileNotFoundError"}
+        return  {"error": "FileNotFoundError"}
 
 
 def scan_images(input_dir: Path):
