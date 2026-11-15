@@ -5,11 +5,11 @@
     "id": "98b6cec2051c4bb624a171e4bd9713ab6103cb688c7ac4f69fcfe2b71281be38"
   },
   "zelda/broke2.png": {
-    "Error": "UnidentifiedImageError",
+    "error": "UnidentifiedImageError",
     "id": "38993747b71f2c525ea23df6d892967a7c2fa4d9d4a32a80db0720473fd09a8e"
   },
   "zelda/broke.png": {
-    "Error": "UnidentifiedImageError",
+    "error": "UnidentifiedImageError",
     "id": "58ec9830e42211da02032a6e914ca07776b04f375a1eb392d3a4b0dca03287cc"
   },
   "zelda/zelda1.jpg": {
