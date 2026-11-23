@@ -3,35 +3,42 @@ from sklearn.linear_model import LogisticRegression
 import numpy as np
 from encoder import encode_image
 
-samples_dir = Path(__file__).resolve().parents[0]/"samples"
+import joblib
 
-x=[]
-y=[]
+def train():
+    samples_dir = Path(__file__).resolve().parents[0]/"train_samples"
+
+    x=[]
+    y=[]
 
 
-for game_dir in sorted(samples_dir.iterdir()):
-    if not game_dir.is_dir():
-        continue
+    for game_dir in sorted(samples_dir.iterdir()):
+        if not game_dir.is_dir():
+            continue
 
-    for image_path in sorted(game_dir.iterdir()):
-        if image_path.is_file() and image_path.suffix.lower() in {".jpg", ".png", ".jpeg"}:
-            vector = encode_image(image_path)
-            x.append(vector)
-            y.append(game_dir.name)
+        for image_path in sorted(game_dir.iterdir()):
+            if image_path.is_file() and image_path.suffix.lower() in {".jpg", ".png", ".jpeg"}:
+                vector = encode_image(image_path)
+                x.append(vector)
+                y.append(game_dir.name)
 
-x = np.stack(x)
-y = np.stack(y)
+    x = np.stack(x)
+    y = np.stack(y)
 
-classifier = LogisticRegression(max_iter=1000)
-classifier.fit(x,y)
+    classifier = LogisticRegression(max_iter=1000)
+    classifier.fit(x,y)
 
-print(classifier.classes_)
+    model_path = Path(__file__).resolve().parent/"classifier.joblib"
+    joblib.dump(classifier,model_path)
+    print("Classificator saved", model_path)
 
-print(x.shape)
-print(y.shape)
-print(y)
+    print(classifier.classes_)
 
-test_path = Path(__file__).resolve().parent/"test.jpg"
-test_vector = encode_image(test_path)
-predictions = classifier.predict([test_vector])
-print(f"Probable game: {predictions[0]}")
+    print(x.shape)
+    print(y.shape)
+    print(y)
+
+if __name__ == '__main__':
+    train()
+
+

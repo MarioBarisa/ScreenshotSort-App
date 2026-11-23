@@ -3,7 +3,7 @@ from scanner import export_images, scan_images
 
 def test_export_does_not_override_existing_file(tmp_path):
 
-    input_dir=tmp_path/"samples"
+    input_dir=tmp_path/"train_samples"
     output_dir=tmp_path/"export"
 
     input_dir.mkdir()
@@ -21,7 +21,7 @@ def test_export_does_not_override_existing_file(tmp_path):
     assert  destination.read_bytes()==b"existing copy"
 
 def test_scan_and_export_preserve_subfolders(tmp_path):
-    input_dir = tmp_path / "samples"
+    input_dir = tmp_path / "train_samples"
     output_dir= tmp_path / "export"
 
     input_dir.mkdir(parents=True, exist_ok=True)

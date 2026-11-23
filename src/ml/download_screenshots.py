@@ -9,7 +9,7 @@ from PIL import Image
 
 
 ROOT = Path(__file__).resolve().parents[2]
-SAMPLES = Path(__file__).resolve().parent/"samples"
+SAMPLES = Path(__file__).resolve().parent/"train_samples"
 LIMIT_PER_GAME = 50
 
 GAMES = {
