@@ -1,3 +1,4 @@
+from itertools import count
 from pathlib import Path
 from sklearn.linear_model import LogisticRegression
 import numpy as np
@@ -32,11 +33,11 @@ def train():
     joblib.dump(classifier,model_path)
     print("Classificator saved", model_path)
 
-    print(classifier.classes_)
+    print(f"Games: {classifier.classes_}")
 
-    print(x.shape)
-    print(y.shape)
-    print(y)
+    #print(x.shape)
+    #print(y.shape)
+    print(f"Number of training images: { y.size }")
 
 if __name__ == '__main__':
     train()
